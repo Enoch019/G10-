@@ -1,0 +1,39 @@
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd (0x27,16,2);
+
+int LED_RED = 8;
+int LED_GREEN = 13;
+
+void setup(){
+  lcd.init();
+  lcd.backlight();
+  pinMode(LED_RED, OUTPUT);
+  pinMode(LED_GREEN, OUTPUT);
+}
+void loop(){
+  lcd.begin(16, 2);
+  digitalWrite(LED_RED, HIGH);
+  digitalWrite(LED_GREEN, LOW);
+  lcd.setCursor(0,0);
+  lcd.print("RED LED ON"); 
+  delay(2000);
+  lcd.clear();
+  digitalWrite(LED_RED, LOW); 
+  digitalWrite(LED_GREEN, HIGH);
+  lcd.setCursor(0,1);
+  lcd.print(" GREEN LED ON"); 
+  delay (2000);
+  lcd.clear();
+  digitalWrite(LED_RED, LOW);
+  digitalWrite(LED_GREEN, LOW);
+  lcd.setCursor(0,0);
+  lcd.print(" BOTH LED OFF"); 
+  delay (2000);
+  lcd.clear();
+  digitalWrite(LED_RED, HIGH);
+  digitalWrite(LED_GREEN, HIGH);
+  lcd.setCursor(0, 1);
+  lcd.print(" BOTH LED ON"); 
+  delay (2000);
+  lcd.clear();
+}
