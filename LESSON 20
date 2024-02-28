@@ -1,0 +1,26 @@
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27,16,2);
+
+int tpin = 7;
+
+void setup() {
+  lcd.init(); 
+  lcd.backlight();
+  pinMode (tpin, INPUT);  
+}
+
+void loop(){
+  lcd.begin (16, 2);
+  if (digitalRead (tpin)==true){
+  lcd.setCursor(0,0);
+  lcd.print("Tilted!");
+  delay (1000);
+  lcd.clear();
+}
+  else {
+    lcd.setCursor(0,1);
+    lcd.print(" Upright!");
+    delay (1000);
+    lcd.clear();
+  }
+}
